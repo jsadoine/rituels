@@ -1,0 +1,56 @@
+{
+  "type": "rituels-profil",
+  "version": 1,
+  "nom": "Bureau & gestion de projet",
+  "description": "Coordination, suivi de dossiers, réunions, reporting.",
+  "shutdown": {
+    "checklist": [
+      "Mails du jour traités, ou marqués à suivre",
+      "Comptes rendus envoyés",
+      "Relances de demain notées",
+      "Agenda de demain regardé et préparé"
+    ],
+    "exemples": {
+      "arret": "Où en est le dossier, qui doit répondre, prochaine échéance…",
+      "premiereAction": "ex. relancer le service achats pour la validation du budget",
+      "resultat": "ex. planning envoyé à l'équipe"
+    }
+  },
+  "sommeil": {
+    "objectif": "7h30",
+    "taches": {
+      "verte": [
+        "Préparer une présentation ou une note importante",
+        "Arbitrages et priorisation",
+        "Négociation, réunion à enjeu",
+        "Construire un planning ou un budget"
+      ],
+      "orange": [
+        "Animer les réunions courantes",
+        "Suivi des dossiers et relances",
+        "Mise à jour des tableaux de bord",
+        "Relecture de documents"
+      ],
+      "rouge": [
+        "Tri et classement des mails",
+        "Saisie et mise à jour d'outils",
+        "Préparer l'ordre du jour de demain",
+        "Petites relances simples"
+      ],
+      "eviter": [
+        "Arbitrage budgétaire ou décision engageante",
+        "Envoi d'un mail sensible sans relecture",
+        "Entretien ou recadrage délicat",
+        "Accepter une nouvelle mission importante"
+      ]
+    },
+    "facteurs": [
+      "Sport",
+      "Écran tard",
+      "Alcool",
+      "Café après 14h",
+      "Repas tard",
+      "Réveils bébé"
+    ]
+  }
+}

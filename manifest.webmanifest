@@ -1,0 +1,23 @@
+{
+  "name": "Rituels",
+  "short_name": "Rituels",
+  "description": "Shutdown de fin de journée, warm-up du matin et suivi sommeil & forme.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "id": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4F5F8",
+  "theme_color": "#3A45B0",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Shutdown du soir", "short_name": "Shutdown", "url": "./shutdown.html#soir", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Warm-up du matin", "short_name": "Warm-up", "url": "./shutdown.html#matin", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Saisir ma nuit", "short_name": "Ma nuit", "url": "./sommeil.html#jour", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "type": "rituels-profil",
+  "version": 1,
+  "nom": "Commerce & relation client",
+  "description": "Vente, accueil, service client, conseil.",
+  "shutdown": {
+    "checklist": [
+      "Caisse ou outils de vente clôturés",
+      "Demandes clients en attente notées",
+      "Commandes et relances de demain prêtes",
+      "Espace de travail rangé"
+    ],
+    "exemples": {
+      "arret": "Client ou dossier, où en est la demande, ce qu'il attend…",
+      "premiereAction": "ex. rappeler M. Durand pour sa commande",
+      "resultat": "ex. devis envoyé au client"
+    }
+  },
+  "sommeil": {
+    "objectif": "7h30",
+    "taches": {
+      "verte": [
+        "Rendez-vous clients importants, négociation",
+        "Gérer une réclamation difficile",
+        "Préparer une offre ou une proposition",
+        "Former un collègue"
+      ],
+      "orange": [
+        "Accueil et conseil courant",
+        "Suivi des commandes et relances",
+        "Mise en rayon, réassort, mise à jour du catalogue",
+        "Réunions d'équipe"
+      ],
+      "rouge": [
+        "Saisie, inventaire, classement",
+        "Réassort et rangement",
+        "Réponses aux demandes simples",
+        "Préparation de la journée suivante"
+      ],
+      "eviter": [
+        "Négociation tarifaire importante",
+        "Litige client sensible",
+        "Engagement contractuel",
+        "Décision commerciale irréversible"
+      ]
+    },
+    "facteurs": [
+      "Sport",
+      "Écran tard",
+      "Alcool",
+      "Café après 14h",
+      "Repas tard",
+      "Réveils bébé"
+    ]
+  }
+}

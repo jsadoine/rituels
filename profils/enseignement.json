@@ -1,0 +1,56 @@
+{
+  "type": "rituels-profil",
+  "version": 1,
+  "nom": "Enseignement",
+  "description": "Cours, préparation, correction, suivi des élèves.",
+  "shutdown": {
+    "checklist": [
+      "Salle et matériel rangés pour demain",
+      "Cahier de textes ou ENT à jour",
+      "Messages aux familles traités ou notés",
+      "Cours de demain prêts"
+    ],
+    "exemples": {
+      "arret": "Classe, chapitre, où en est la séquence…",
+      "premiereAction": "ex. finir la fiche d'exercices de la séance 3",
+      "resultat": "ex. séance de jeudi prête"
+    }
+  },
+  "sommeil": {
+    "objectif": "7h30",
+    "taches": {
+      "verte": [
+        "Concevoir une séquence ou un nouveau cours",
+        "Corrections qui demandent du jugement (copies longues)",
+        "Rendez-vous parents ou entretiens délicats",
+        "Préparer une évaluation"
+      ],
+      "orange": [
+        "Faire cours sur des séances déjà préparées",
+        "Corrections rapides (QCM, exercices)",
+        "Réunions d'équipe et conseils",
+        "Adapter un cours existant"
+      ],
+      "rouge": [
+        "Saisie des notes et administratif",
+        "Photocopies, préparation du matériel",
+        "Rangement, classement",
+        "Répondre aux messages simples"
+      ],
+      "eviter": [
+        "Décision importante sur un élève",
+        "Échange tendu avec une famille",
+        "Inaugurer une activité nouvelle et complexe",
+        "Corriger les copies décisives"
+      ]
+    },
+    "facteurs": [
+      "Sport",
+      "Écran tard",
+      "Alcool",
+      "Café après 14h",
+      "Repas tard",
+      "Réveils bébé"
+    ]
+  }
+}

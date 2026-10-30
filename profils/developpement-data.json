@@ -1,0 +1,56 @@
+{
+  "type": "rituels-profil",
+  "version": 1,
+  "nom": "Développement & data",
+  "description": "Code, analyse de données, recherche technique.",
+  "shutdown": {
+    "checklist": [
+      "Code poussé, sur une branche de travail si ce n'est pas fini",
+      "Calculs ou traitements lancés pour la nuit notés",
+      "Onglets, notebooks et terminaux fermés",
+      "Agenda de demain regardé"
+    ],
+    "exemples": {
+      "arret": "Fichier, fonction, état du bug, hypothèse en cours…",
+      "premiereAction": "ex. relancer le test qui échoue après le correctif d'hier",
+      "resultat": "ex. premier commit : correction de la lecture des fichiers manquants"
+    }
+  },
+  "sommeil": {
+    "objectif": "7h30",
+    "taches": {
+      "verte": [
+        "Architecture ou refactorisation",
+        "Debug difficile",
+        "Écriture : article, documentation de méthode",
+        "Décisions techniques, revue de conception"
+      ],
+      "orange": [
+        "Implémenter une fonction déjà spécifiée",
+        "Revue de code",
+        "Préparation et contrôle qualité des données",
+        "Réunions et points d'équipe"
+      ],
+      "rouge": [
+        "Lancer et surveiller des calculs",
+        "Mails, administratif, rangement des données",
+        "Contrôle visuel répétitif",
+        "Documentation simple, mise à jour du README"
+      ],
+      "eviter": [
+        "Fusion sur la branche principale ou mise en production",
+        "Suppression ou déplacement de données",
+        "Décision technique irréversible",
+        "Démarrer une tâche complexe"
+      ]
+    },
+    "facteurs": [
+      "Sport",
+      "Écran tard",
+      "Alcool",
+      "Café après 14h",
+      "Repas tard",
+      "Réveils bébé"
+    ]
+  }
+}

@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<title>Rituels</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#3A45B0">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout : accueil de l'appli, tuiles des deux outils puis « Profil et sauvegarde ». */
+:root{
+  --bg:#F4F5F8; --surface:#FFFFFF; --sunk:#ECEEF3; --ink:#18202C; --muted:#5B6576; --line:#DADEE6;
+  --dusk:#3A45B0; --night:#4338CA; --g:#2E8B57; --o:#C27C12; --r:#C8443A;
+  --f-display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F131A; --surface:#161B24; --sunk:#1C222D; --ink:#E6E9EF; --muted:#9AA3B2; --line:#2A3140;
+  --dusk:#8F98FF; --night:#9A97FF; --g:#4CC07F; --o:#E8A84A; --r:#E86A5E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F131A; --surface:#161B24; --sunk:#1C222D; --ink:#E6E9EF; --muted:#9AA3B2; --line:#2A3140;
+  --dusk:#8F98FF; --night:#9A97FF; --g:#4CC07F; --o:#E8A84A; --r:#E86A5E; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 48px;display:flex;flex-direction:column;gap:14px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:0}
+h1{font-family:var(--f-display);font-size:2.2rem;font-weight:700;margin:4px 0 10px;letter-spacing:-.01em}
+h2{font-family:var(--f-display);margin:0}
+p{margin:0}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--c,var(--dusk));outline-offset:2px}
+.tile{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;transition:border-color .15s}
+.tile:hover,.tile:focus-visible{border-color:var(--c)}
+.tile h2{font-size:1.35rem;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.tile h2::after{content:"→";color:var(--c);font-weight:600}
+.status{display:flex;flex-direction:column;gap:4px;font-size:14px;color:var(--muted)}
+.status b{color:var(--ink);font-weight:600}
+.status code{font-family:var(--f-body);font-weight:500;font-size:14.5px;color:var(--ink);overflow-wrap:anywhere}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;font-variant-numeric:tabular-nums}
+.pill.green{color:var(--g);background:color-mix(in srgb,var(--g) 14%,transparent)}
+.pill.orange{color:var(--o);background:color-mix(in srgb,var(--o) 14%,transparent)}
+.pill.red{color:var(--r);background:color-mix(in srgb,var(--r) 14%,transparent)}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:14px;scroll-margin-top:16px}
+.panel.welcome{border:1.5px solid var(--dusk)}
+.panel h2{font-size:1.25rem;font-weight:700}
+.sub{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid var(--line)}
+.sub h3{font-size:15px;font-weight:600;margin:0}
+details.sub summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.sub summary::-webkit-details-marker{display:none}
+details.sub summary::after{content:"Afficher";font-size:13px;color:var(--dusk);font-weight:500}
+details.sub[open] summary::after{content:"Masquer"}
+details.sub[open]{gap:8px}
+details.sub>*:not(summary){margin-top:8px}
+.hint{color:var(--muted);font-size:14px}
+.current{font-size:14px}
+.current b{font-weight:600}
+.profiles{display:flex;flex-direction:column;gap:8px}
+.prof{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:11px 13px;cursor:pointer;background:var(--bg)}
+.prof input{accent-color:var(--dusk);margin-top:4px;width:16px;height:16px;flex:none}
+.prof span{display:flex;flex-direction:column;min-width:0}
+.prof b{font-weight:600}
+.prof small{color:var(--muted);font-size:13px}
+.prof:has(input:checked){border-color:var(--dusk);background:color-mix(in srgb,var(--dusk) 9%,var(--surface))}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:8px 13px;cursor:pointer;font-weight:500;font-size:14px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:inherit}
+.btn:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.primary{background:var(--dusk);border-color:var(--dusk);color:var(--bg);font-weight:600}
+.btn.ghost{background:transparent}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.confirm{border:1px dashed var(--dusk);border-radius:12px;padding:13px 14px;display:flex;flex-direction:column;gap:10px;background:color-mix(in srgb,var(--dusk) 6%,var(--surface))}
+.confirm ul{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:2px}
+.msg{font-size:14px;font-weight:500}
+.msg.ok{color:var(--g)}
+.msg.err{color:var(--r)}
+.foot{font-size:12px;color:var(--muted);margin-top:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<body>
+<main class="wrap">
+  <div>
+    <p class="eyebrow" id="today"></p>
+    <h1>Rituels</h1>
+  </div>
+
+  <section class="panel welcome" id="welcome" hidden>
+    <h2>Bienvenue</h2>
+    <p class="hint">Choisis le profil le plus proche de ton métier. Il pré-remplit la checklist du soir, les exemples et les listes de tâches selon ta nuit. Tout reste modifiable ensuite.</p>
+    <div class="profiles" id="w-list"></div>
+    <div class="actions"><button class="btn primary" data-act="ask-apply" data-src="w" disabled>Utiliser ce profil</button><button class="btn ghost" data-act="skip">Plus tard</button></div>
+    <div id="w-confirm"></div>
+  </section>
+
+  <a class="tile" href="shutdown.html" id="t-shut" style="--c:var(--dusk)">
+    <h2>Shutdown & Warm-up</h2>
+    <div class="status" id="s-shut"></div>
+  </a>
+  <a class="tile" href="sommeil.html" id="t-sleep" style="--c:var(--night)">
+    <h2>Sommeil & Forme</h2>
+    <div class="status" id="s-sleep"></div>
+  </a>
+
+  <section class="panel" id="profil">
+    <h2>Profil et sauvegarde</h2>
+    <p class="current" id="current"></p>
+
+    <details class="sub" id="p-details">
+      <summary><h3>Changer de profil métier</h3></summary>
+      <p class="hint">Remplace la checklist du soir, les exemples, les listes de tâches et les facteurs de la veille. Tes nuits, tes journées et tes projets ne sont pas touchés.</p>
+      <div class="profiles" id="p-list"></div>
+      <div class="actions"><button class="btn primary" data-act="ask-apply" data-src="p" disabled>Appliquer ce profil</button></div>
+      <div id="p-confirm"></div>
+    </details>
+
+    <div class="sub">
+      <h3>Charger un fichier</h3>
+      <p class="hint">Un profil perso, une sauvegarde complète, ou un ancien export d'un des deux outils.</p>
+      <div class="actions"><label class="btn" for="loadfile">Choisir un fichier</label><input type="file" id="loadfile" accept="application/json,.json" hidden></div>
+      <div id="f-confirm"></div>
+    </div>
+
+    <div class="sub">
+      <h3>Sauvegarder mes données</h3>
+      <p class="hint">Un seul fichier avec tout : nuits, journées, projets, historique et réglages. Garde-le en lieu sûr, ou recharge-le sur un autre appareil.</p>
+      <div class="actions"><button class="btn" data-act="export">Exporter toutes mes données</button></div>
+    </div>
+    <p class="msg" id="msg" hidden></p>
+  </section>
+
+  <p class="foot">Tout est stocké sur cet appareil, rien n'est envoyé. Pense à exporter tes données de temps en temps.</p>
+</main>
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=n=>String(n).padStart(2,'0');
+const dkey=(d=new Date())=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const hm=t=>{const d=new Date(t);return d.getHours()+':'+pad(d.getMinutes())};
+const fmtDur=m=>Math.floor(m/60)+'h'+pad(Math.round(m)%60);
+const uid=()=>Math.random().toString(36).slice(2,9);
+const K_SHUT='shutdown-warmup.v1', K_SLEEP='sommeil-forme.v1', K_PROF='rituels-profil', K_SKIP='rituels-bienvenue-vue';
+const read=k=>{try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}};
+const write=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}};
+const morning=new Date().getHours()<12;
+$('#today').textContent=new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
+
+/* ---------- État du jour ---------- */
+function renderStatus(){
+  const sh=read(K_SHUT);
+  let h1='<span>Pas encore utilisé. Premier shutdown ce soir.</span>';
+  if(sh&&Array.isArray(sh.projects)&&(sh.projects.length||sh.starter||(sh.log||[]).length)){
+    const st=sh.starter, s=sh.session||{}, lines=[];
+    if(st&&!st.doneAt)lines.push(`<span>Tâche d'attaque · ${esc(st.pname)}</span><code>${esc(st.text)}</code>`);
+    else if(st&&st.doneAt&&new Date(st.doneAt).toDateString()===new Date().toDateString())lines.push(`<span>Tâche d'attaque <b>bouclée à ${hm(st.doneAt)}</b>.</span>`);
+    if(s.date===dkey()&&s.closedAt)lines.push(`<span>Journée <b>fermée à ${hm(s.closedAt)}</b>.</span>`);
+    else if(!morning)lines.push('<span>Shutdown du jour <b>pas encore fait</b>.</span>');
+    h1=lines.join('')||'<span>Rien en attente.</span>';
+  }
+  $('#s-shut').innerHTML=h1;
+  $('#t-shut').href='shutdown.html#'+(morning?'matin':'soir');
+
+  const sl=read(K_SLEEP);
+  let h2='<span>Pas encore utilisé. Saisis ta première nuit demain matin.</span>';
+  if(sl&&sl.entries&&Object.keys(sl.entries).length){
+    const e=sl.entries[dkey()], set=sl.settings||{}, t=set.target||450, g=set.green??75, r=set.red??60;
+    const score=e=>{if(!e||!e.total)return null;const tot=e.total,dur=55*Math.max(0,Math.min(1,(tot-240)/Math.max(30,t-240)));
+      if(e.deep!=null&&e.rem!=null){const awk=e.awake||0;return Math.round(dur+Math.min(e.deep/tot*100/18,1)*15+Math.min(e.rem/tot*100/22,1)*15+(1-Math.min(awk/(tot+awk)/0.15,1))*15)}
+      return Math.round(dur+40)};
+    const sc=score(e), lv=sc==null?null:sc>=g?'green':sc<r?'red':'orange';
+    const names={green:'Bonne nuit',orange:'Nuit moyenne',red:'Nuit difficile'};
+    const rated=e&&e.perf&&Object.values(e.perf).some(v=>v!=null);
+    const lines=[];
+    lines.push(sc!=null?`<span>Cette nuit : <b>${fmtDur(e.total)}</b> <span class="pill ${lv}">${names[lv]} · ${sc}</span></span>`:'<span>Nuit de cette nuit <b>pas encore saisie</b>.</span>');
+    if(!morning)lines.push(rated?'<span>Journée <b>notée</b>.</span>':'<span>Journée <b>pas encore notée</b>.</span>');
+    h2=lines.join('');
+  }
+  $('#s-sleep').innerHTML=h2;
+
+  const pr=read(K_PROF);
+  $('#current').innerHTML=pr?`Profil actuel : <b>${esc(pr.nom)}</b> <span class="hint">· appliqué le ${esc(new Date(pr.date).toLocaleDateString('fr-FR',{day:'numeric',month:'long'}))}</span>`:'<span class="hint">Aucun profil appliqué : réglages par défaut.</span>';
+  const fresh=!pr&&!read(K_SKIP)&&!(sh&&Array.isArray(sh.projects)&&sh.projects.length)&&!(sl&&sl.entries&&Object.keys(sl.entries).length);
+  $('#welcome').hidden=!fresh;
+}
+
+/* ---------- Profils ---------- */
+let catalogue=null;
+const sel={w:null,p:null};
+function listHTML(src){
+  if(catalogue===null)return '<p class="hint">Chargement des profils…</p>';
+  if(!catalogue.length)return '<p class="hint">La liste des profils n\'est disponible qu\'avec l\'appli en ligne. Tu peux charger un fichier de profil plus bas.</p>';
+  return catalogue.map((p,i)=>`<label class="prof"><input type="radio" name="prof-${src}" value="${i}" ${sel[src]===i?'checked':''}><span><b>${esc(p.nom)}</b><small>${esc(p.description||'')}</small></span></label>`).join('');
+}
+function renderLists(){
+  $('#w-list').innerHTML=listHTML('w'); $('#p-list').innerHTML=listHTML('p');
+  document.querySelectorAll('[data-act="ask-apply"]').forEach(b=>b.disabled=sel[b.dataset.src]==null);
+}
+fetch('profils/index.json',{cache:'no-cache'}).then(r=>r.ok?r.json():[]).then(j=>{catalogue=Array.isArray(j)?j:[];renderLists()}).catch(()=>{catalogue=[];renderLists()});
+
+function parseTarget(v){
+  if(typeof v==='number')return v;
+  const m=String(v||'').trim().match(/^(\d{1,2})\s*[h:]\s*(\d{0,2})$/i);
+  return m?(+m[1])*60+(+m[2]||0):null;
+}
+function validProfile(p){return p&&p.type==='rituels-profil'&&typeof p.nom==='string'}
+function profileSummary(p){
+  const s=p.shutdown||{}, z=p.sommeil||{}, t=z.taches||{}, out=[];
+  if(Array.isArray(s.checklist))out.push(`Checklist du soir : ${s.checklist.length} points`);
+  if(s.exemples)out.push('Exemples dans les champs du shutdown');
+  if(Array.isArray(s.projets)&&s.projets.length)out.push(`${s.projets.length} projets ajoutés s'ils n'existent pas déjà`);
+  const n=['verte','orange','rouge','eviter'].filter(k=>Array.isArray(t[k])).length;
+  if(n)out.push('Tâches selon la nuit (journées verte, orange, rouge, à éviter)');
+  if(Array.isArray(z.facteurs))out.push(`Facteurs de la veille : ${z.facteurs.join(', ')}`);
+  if(z.objectif)out.push(`Objectif de sommeil : ${esc(String(z.objectif))}`);
+  return out;
+}
+function applyProfile(p){
+  const s=p.shutdown||{}, z=p.sommeil||{};
+  // Shutdown
+  let sh=read(K_SHUT);
+  if(!sh||!Array.isArray(sh.projects))sh={v:1,updatedAt:0,projects:[],session:{date:dkey(),dump:'',touched:[],starterPid:null,easy:false,commit:'',checks:{},closedAt:null},starter:null,parking:'',log:[]};
+  if(Array.isArray(s.checklist)){const old=sh.checks||[];sh.checks=s.checklist.filter(Boolean).map(l=>{const o=old.find(c=>c.label===l);return o||{id:uid(),label:String(l)}})}
+  if(s.exemples){const e=s.exemples;sh.examples=Object.assign({},sh.examples||{},e.arret?{stopped:e.arret}:{},e.premiereAction?{first:e.premiereAction}:{},e.resultat?{result:e.resultat}:{})}
+  if(Array.isArray(s.projets)){const have=new Set(sh.projects.map(x=>x.name.trim().toLowerCase()));
+    s.projets.forEach(n=>{n=String(n).trim();if(n&&!have.has(n.toLowerCase())){sh.projects.push({id:uid(),name:n,hue:Math.floor(Math.random()*360),stoppedAt:'',firstAction:'',todo:[],status:'active',createdAt:Date.now()});have.add(n.toLowerCase())}})}
+  sh.updatedAt=Date.now();
+  // Sommeil
+  let sl=read(K_SLEEP);
+  if(!sl||typeof sl.entries!=='object')sl={v:1,settings:{},entries:{}};
+  sl.settings=sl.settings||{};
+  const t=z.taches||{}, cur=sl.settings.tasks||{};
+  if(['verte','orange','rouge','eviter'].some(k=>Array.isArray(t[k])))
+    sl.settings.tasks={green:t.verte||cur.green||[],orange:t.orange||cur.orange||[],red:t.rouge||cur.red||[],avoid:t.eviter||cur.avoid||[]};
+  if(!sl.settings.tasks||!sl.settings.tasks.green||!sl.settings.tasks.green.length)delete sl.settings.tasks;
+  if(Array.isArray(z.facteurs))sl.settings.factors=z.facteurs.map(String);
+  const tg=parseTarget(z.objectif);if(tg&&tg>=180&&tg<=720)sl.settings.target=tg;
+  if(!write(K_SHUT,sh)||!write(K_SLEEP,sl))return false;
+  write(K_PROF,{nom:p.nom,date:Date.now()});
+  return true;
+}
+function confirmBox(id,html){$(id).innerHTML=html?`<div class="confirm">${html}</div>`:''}
+function say(t,ok){const m=$('#msg');m.hidden=false;m.className='msg '+(ok?'ok':'err');m.textContent=t}
+
+/* ---------- Sauvegarde ---------- */
+function exportAll(){
+  const data={type:'rituels-sauvegarde',version:1,exporte:new Date().toISOString(),profil:read(K_PROF),shutdown:read(K_SHUT),sommeil:read(K_SLEEP)};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='rituels-sauvegarde-'+dkey()+'.json';
+  document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
+  say('Sauvegarde exportée dans tes téléchargements.',true);
+}
+let pending=null;
+function handleFile(name,text){
+  let d;try{d=JSON.parse(text)}catch(e){confirmBox('#f-confirm','<p class="msg err">Ce fichier n\'est pas un JSON lisible.</p>');return}
+  const btns=label=>`<div class="actions"><button class="btn primary" data-act="file-ok">${label}</button><button class="btn ghost" data-act="file-cancel">Annuler</button></div>`;
+  if(validProfile(d)){
+    pending={kind:'profil',data:d};
+    confirmBox('#f-confirm',`<p><b>Profil « ${esc(d.nom)} »</b>${d.description?' · '+esc(d.description):''}</p><ul>${profileSummary(d).map(x=>`<li>${x}</li>`).join('')}</ul><p class="hint">Tes nuits, tes journées et tes projets existants sont conservés.</p>${btns('Appliquer ce profil')}`);
+  }else if(d&&d.type==='rituels-sauvegarde'){
+    const np=d.shutdown&&Array.isArray(d.shutdown.projects)?d.shutdown.projects.length:0, nl=d.shutdown&&d.shutdown.log?d.shutdown.log.length:0, nn=d.sommeil&&d.sommeil.entries?Object.keys(d.sommeil.entries).length:0;
+    pending={kind:'sauvegarde',data:d};
+    confirmBox('#f-confirm',`<p><b>Sauvegarde du ${esc(new Date(d.exporte).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}))}</b></p><ul><li>${np} projets, ${nl} shutdowns</li><li>${nn} jours de sommeil</li></ul><p class="hint">Remplace <b>toutes</b> les données actuelles de cet appareil.</p>${btns('Remplacer mes données')}`);
+  }else if(d&&Array.isArray(d.projects)&&d.session){
+    pending={kind:'shutdown',data:d};
+    confirmBox('#f-confirm',`<p><b>Ancien export du Shutdown</b> : ${d.projects.length} projets, ${(d.log||[]).length} shutdowns.</p><p class="hint">Remplace les données actuelles du Shutdown. Sommeil & Forme n'est pas touché.</p>${btns('Remplacer')}`);
+  }else if(d&&d.entries&&typeof d.entries==='object'){
+    pending={kind:'sommeil',data:d};
+    confirmBox('#f-confirm',`<p><b>Ancien export de Sommeil & Forme</b> : ${Object.keys(d.entries).length} jours.</p><p class="hint">Remplace les données actuelles de Sommeil & Forme. Le Shutdown n'est pas touché.</p>${btns('Remplacer')}`);
+  }else{
+    pending=null;confirmBox('#f-confirm','<p class="msg err">Ce fichier n\'est ni un profil, ni une sauvegarde Rituels.</p>');
+  }
+}
+function commitFile(){
+  if(!pending)return;const {kind,data}=pending;let ok=true;
+  if(kind==='profil')ok=applyProfile(data);
+  if(kind==='sauvegarde'){if(data.shutdown)ok=write(K_SHUT,data.shutdown)&&ok;if(data.sommeil)ok=write(K_SLEEP,data.sommeil)&&ok;if(data.profil)write(K_PROF,data.profil)}
+  if(kind==='shutdown')ok=write(K_SHUT,data);
+  if(kind==='sommeil')ok=write(K_SLEEP,data);
+  pending=null;confirmBox('#f-confirm','');renderStatus();
+  say(ok?(kind==='profil'?`Profil « ${data.nom} » appliqué.`:'Données chargées.'):'Impossible d\'écrire sur cet appareil (stockage plein ou bloqué).',ok);
+}
+
+/* ---------- Événements ---------- */
+document.addEventListener('change',e=>{
+  const t=e.target;
+  if(t.name==='prof-w'||t.name==='prof-p'){const src=t.name.slice(-1);sel[src]=+t.value;confirmBox('#'+src+'-confirm','');document.querySelector(`[data-act="ask-apply"][data-src="${src}"]`).disabled=false}
+  if(t.id==='loadfile'){const f=t.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{handleFile(f.name,r.result);t.value=''};r.readAsText(f)}
+});
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;
+  const a=b.dataset.act;
+  if(a==='ask-apply'){
+    const src=b.dataset.src, item=catalogue&&catalogue[sel[src]];if(!item)return;
+    confirmBox('#'+src+'-confirm','<p class="hint">Chargement…</p>');
+    fetch('profils/'+item.fichier,{cache:'no-cache'}).then(r=>r.json()).then(p=>{
+      if(!validProfile(p))throw 0;
+      pending={kind:'profil',data:p,src};
+      confirmBox('#'+src+'-confirm',`<ul>${profileSummary(p).map(x=>`<li>${x}</li>`).join('')}</ul><div class="actions"><button class="btn primary" data-act="apply-ok" data-src="${src}">Confirmer</button><button class="btn ghost" data-act="apply-cancel" data-src="${src}">Annuler</button></div>`);
+    }).catch(()=>confirmBox('#'+src+'-confirm','<p class="msg err">Impossible de lire ce profil. Vérifie ta connexion.</p>'));
+  }
+  if(a==='apply-ok'&&pending&&pending.kind==='profil'){
+    const ok=applyProfile(pending.data), nom=pending.data.nom;pending=null;
+    confirmBox('#w-confirm','');confirmBox('#p-confirm','');renderStatus();
+    say(ok?`Profil « ${nom} » appliqué.`:'Impossible d\'écrire sur cet appareil.',ok);
+    if(ok&&b.dataset.src==='w')$('#profil').scrollIntoView({behavior:'smooth'});
+  }
+  if(a==='apply-cancel'){pending=null;confirmBox('#'+b.dataset.src+'-confirm','')}
+  if(a==='skip'){write(K_SKIP,true);renderStatus()}
+  if(a==='export')exportAll();
+  if(a==='file-ok')commitFile();
+  if(a==='file-cancel'){pending=null;confirmBox('#f-confirm','')}
+});
+
+renderStatus();renderLists();
+window.addEventListener('pageshow',e=>{if(e.persisted)renderStatus()});
+if('serviceWorker' in navigator&&location.protocol!=='file:'){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+if(navigator.storage&&navigator.storage.persist){navigator.storage.persist().catch(()=>{})}
+})();
+</script>
+</body>
+</html>

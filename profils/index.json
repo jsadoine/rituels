@@ -1,0 +1,37 @@
+[
+  {
+    "fichier": "neutre.json",
+    "nom": "Neutre",
+    "description": "Réglages de base, pour tous les métiers. Un bon point de départ à adapter."
+  },
+  {
+    "fichier": "developpement-data.json",
+    "nom": "Développement & data",
+    "description": "Code, analyse de données, recherche technique."
+  },
+  {
+    "fichier": "bureau-gestion-projet.json",
+    "nom": "Bureau & gestion de projet",
+    "description": "Coordination, suivi de dossiers, réunions, reporting."
+  },
+  {
+    "fichier": "enseignement.json",
+    "nom": "Enseignement",
+    "description": "Cours, préparation, correction, suivi des élèves."
+  },
+  {
+    "fichier": "sante-soin.json",
+    "nom": "Santé & soin",
+    "description": "Soins, horaires décalés, travail en équipe."
+  },
+  {
+    "fichier": "commerce-relation-client.json",
+    "nom": "Commerce & relation client",
+    "description": "Vente, accueil, service client, conseil."
+  },
+  {
+    "fichier": "independant-creatif.json",
+    "nom": "Indépendant·e & créatif·ve",
+    "description": "Freelance, création, conseil : clients, production et gestion."
+  }
+]

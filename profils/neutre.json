@@ -1,0 +1,56 @@
+{
+  "type": "rituels-profil",
+  "version": 1,
+  "nom": "Neutre",
+  "description": "Réglages de base, pour tous les métiers. Un bon point de départ à adapter.",
+  "shutdown": {
+    "checklist": [
+      "Ce qui devait partir aujourd'hui est envoyé, ou reporté avec une date",
+      "Agenda de demain regardé",
+      "Bureau et onglets rangés",
+      "Messages urgents traités ou notés"
+    ],
+    "exemples": {
+      "arret": "Où en est le dossier, ce qui était en cours, ce que tu attends…",
+      "premiereAction": "ex. rappeler le fournisseur pour confirmer la date",
+      "resultat": "ex. devis envoyé, compte rendu bouclé"
+    }
+  },
+  "sommeil": {
+    "objectif": "7h30",
+    "taches": {
+      "verte": [
+        "La tâche qui demande le plus de réflexion",
+        "Rédaction ou création importante",
+        "Décisions et arbitrages",
+        "Apprendre quelque chose de nouveau"
+      ],
+      "orange": [
+        "Avancer sur des tâches déjà bien définies",
+        "Réunions et échanges",
+        "Relectures et vérifications",
+        "Suivi des dossiers en cours"
+      ],
+      "rouge": [
+        "Mails, administratif, classement",
+        "Tâches routinières et répétitives",
+        "Rangement, préparation de la suite",
+        "Petites tâches faciles à cocher"
+      ],
+      "eviter": [
+        "Décision importante ou irréversible",
+        "Engagement ou signature",
+        "Conversation délicate",
+        "Démarrer un gros chantier"
+      ]
+    },
+    "facteurs": [
+      "Sport",
+      "Écran tard",
+      "Alcool",
+      "Café après 14h",
+      "Repas tard",
+      "Réveils bébé"
+    ]
+  }
+}

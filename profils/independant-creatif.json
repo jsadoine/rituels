@@ -1,0 +1,56 @@
+{
+  "type": "rituels-profil",
+  "version": 1,
+  "nom": "Indépendant·e & créatif·ve",
+  "description": "Freelance, création, conseil : clients, production et gestion.",
+  "shutdown": {
+    "checklist": [
+      "Heures du jour notées pour la facturation",
+      "Messages clients traités ou planifiés",
+      "Fichiers sauvegardés et rangés",
+      "Priorités de demain choisies"
+    ],
+    "exemples": {
+      "arret": "Projet client, étape en cours, retour attendu…",
+      "premiereAction": "ex. finir la deuxième proposition de maquette",
+      "resultat": "ex. livrable envoyé au client"
+    }
+  },
+  "sommeil": {
+    "objectif": "7h30",
+    "taches": {
+      "verte": [
+        "Création, conception, écriture",
+        "Rendez-vous de prospection ou de cadrage",
+        "Établir un devis ou une stratégie",
+        "Apprendre un nouvel outil"
+      ],
+      "orange": [
+        "Production sur un projet déjà cadré",
+        "Retouches et allers-retours client",
+        "Réunions de suivi",
+        "Veille et inspiration"
+      ],
+      "rouge": [
+        "Facturation, comptabilité, administratif",
+        "Classement des fichiers, sauvegardes",
+        "Publication et réseaux sociaux programmés",
+        "Petites retouches simples"
+      ],
+      "eviter": [
+        "Signer ou négocier un contrat",
+        "Fixer un tarif ou accepter une mission à la volée",
+        "Envoyer un livrable final sans relecture",
+        "Démarrer un gros projet"
+      ]
+    },
+    "facteurs": [
+      "Sport",
+      "Écran tard",
+      "Alcool",
+      "Café après 14h",
+      "Repas tard",
+      "Réveils bébé"
+    ]
+  }
+}

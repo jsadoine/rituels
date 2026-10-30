@@ -1,0 +1,57 @@
+{
+  "type": "rituels-profil",
+  "version": 1,
+  "nom": "Santé & soin",
+  "description": "Soins, horaires décalés, travail en équipe.",
+  "shutdown": {
+    "checklist": [
+      "Transmissions faites à l'équipe suivante",
+      "Dossiers et traçabilité à jour",
+      "Matériel et poste rangés",
+      "Planning des prochains jours vérifié"
+    ],
+    "exemples": {
+      "arret": "Patient ou dossier, ce qui reste à suivre, à qui c'est transmis…",
+      "premiereAction": "ex. vérifier les résultats du bilan de la chambre 12",
+      "resultat": "ex. transmissions écrites terminées"
+    }
+  },
+  "sommeil": {
+    "objectif": "7h30",
+    "taches": {
+      "verte": [
+        "Situations complexes ou urgentes",
+        "Formation, apprentissage d'un geste nouveau",
+        "Entretiens avec patients ou familles",
+        "Organisation et coordination de l'équipe"
+      ],
+      "orange": [
+        "Soins et prises en charge habituels",
+        "Transmissions et réunions d'équipe",
+        "Mise à jour des dossiers",
+        "Accompagnement d'un collègue"
+      ],
+      "rouge": [
+        "Traçabilité, saisie, administratif",
+        "Préparation et rangement du matériel",
+        "Tâches routinières bien rodées",
+        "Demander de l'aide sans hésiter"
+      ],
+      "eviter": [
+        "Calculs de doses sans double vérification",
+        "Prise en charge nouvelle et complexe seule",
+        "Annonce ou discussion délicate",
+        "Rester seul·e sur une décision importante"
+      ]
+    },
+    "facteurs": [
+      "Sport",
+      "Écran tard",
+      "Alcool",
+      "Café après 14h",
+      "Repas tard",
+      "Réveils bébé",
+      "Garde de nuit"
+    ]
+  }
+}
